@@ -12,7 +12,7 @@
                     x-init="
                         Echo.channel('chat')
                             {{-- Note: in listen method, type your Laravel event name --}}
-                            .listen('ExampleEvent', (event) => {
+                            .listen('.App\\Events\\Chat\\ExampleTwoEvent', (event) => {
                                 console.log(event)
                             })
                     "
