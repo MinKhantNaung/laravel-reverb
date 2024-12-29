@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -16,16 +17,24 @@ class ExampleEvent implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public function __construct(public User $user)
+    public function __construct(protected User $user, protected Message $message)
     {
         //
     }
 
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return array<int, \Illuminate\Broadcasting\Channel>
-     */
+    public function broadcastWith(): array
+    {
+        return [
+            'user' => [
+                'id' => $this->user->id,
+                'name' => $this->user->name
+            ],
+            'message' => [
+                'id' => $this->message->id,
+            ]
+        ];
+    }
+
     public function broadcastOn(): array
     {
         return [
