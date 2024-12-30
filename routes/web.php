@@ -17,11 +17,11 @@ Route::get('/', function () {
 Route::get('/broadcast', function () {
     sleep(3);
 
-    broadcast(new OrderDispatched(User::find(1), Order::find(1)));
+    broadcast(new OrderDispatched(Order::find(1)));
 
     sleep(5);
 
-    broadcast(new OrderDelivered(User::find(1), Order::find(1)));
+    broadcast(new OrderDelivered(Order::find(1)));
 });
 
 Route::get('/dashboard', function () {
@@ -35,3 +35,9 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/orders/{order}', function (Order $order) {
+    return view('order', [
+        'order' => $order
+    ]);
+});
