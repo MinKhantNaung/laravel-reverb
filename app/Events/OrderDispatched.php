@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -19,7 +20,7 @@ class OrderDispatched implements ShouldBroadcastNow
     /**
      * Create a new event instance.
      */
-    public function __construct(public User $user)
+    public function __construct(public User $user, public Order $order)
     {
         //
     }

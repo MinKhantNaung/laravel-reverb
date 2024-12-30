@@ -10,11 +10,13 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div
                     x-data="{
+                        order: null,
                         dispatched: false
                     }"
                     x-init="
                         Echo.private('users.{{ auth()->id() }}')
                             .listen('OrderDispatched', (event) => {
+                                order = event.order
                                 dispatched = true
                             })
                     "
@@ -22,7 +24,7 @@
                 >
                     <template x-if="dispatched">
                         <div>
-                            Order has been dispatched.
+                            Order (#<span x-text="order.id"></span>) has been dispatched.
                         </div>
                     </template>
                 </div>
