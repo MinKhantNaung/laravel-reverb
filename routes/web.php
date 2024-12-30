@@ -4,6 +4,7 @@ use App\Models\User;
 use App\Models\Message;
 use App\Events\ExampleEvent;
 use App\Events\Chat\ExampleTwoEvent;
+use App\Events\OrderDispatched;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
@@ -12,7 +13,7 @@ Route::get('/', function () {
 });
 
 Route::get('/broadcast', function () {
-    broadcast(new ExampleEvent(User::find(1), Message::find(1)));
+    broadcast(new OrderDispatched(User::find(1)));
 });
 
 Route::get('/dashboard', function () {

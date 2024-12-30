@@ -9,12 +9,22 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div
+                    x-data="{
+                        dispatched: false
+                    }"
                     x-init="
                         Echo.private('users.{{ auth()->id() }}')
+                            .listen('OrderDispatched', (event) => {
+                                dispatched = true
+                            })
                     "
                     class="p-6 text-gray-900"
                 >
-                    You are logged in.
+                    <template x-if="dispatched">
+                        <div>
+                            Order has been dispatched.
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
