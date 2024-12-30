@@ -10,11 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div
                     x-init="
-                        Echo.channel('chat')
-                            {{-- Note: in listen method, type your Laravel event name --}}
-                            .listen('ExampleEvent', (event) => {
-                                console.log(event)
-                            })
+                        Echo.private('users.{{ auth()->id() }}')
                     "
                     class="p-6 text-gray-900"
                 >
