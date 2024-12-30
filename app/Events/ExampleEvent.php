@@ -13,13 +13,18 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ExampleEvent implements ShouldBroadcastNow
+class ExampleEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public function __construct(protected User $user, protected Message $message)
     {
         //
+    }
+
+    public function broadcastQueue(): string
+    {
+        return 'chat';
     }
 
     public function broadcastWith(): array

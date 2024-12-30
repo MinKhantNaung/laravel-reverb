@@ -12,8 +12,7 @@ Route::get('/', function () {
 });
 
 Route::get('/broadcast', function () {
-    // broadcast(new ExampleEvent(User::find(1), Message::find(1)));
-    broadcast(new ExampleTwoEvent());
+    broadcast(new ExampleEvent(User::find(1), Message::find(1)));
 });
 
 Route::get('/dashboard', function () {
