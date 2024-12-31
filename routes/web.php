@@ -9,6 +9,7 @@ use App\Events\OrderDispatched;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Models\Order;
+use App\Models\Room;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,3 +42,9 @@ Route::get('/orders/{order}', function (Order $order) {
         'order' => $order
     ]);
 });
+
+Route::get('/rooms/{room}', function (Room $room) {
+    return view('room', [
+        'room' => $room
+    ]);
+})->middleware(['auth', 'verified'])->name('rooms.index');
