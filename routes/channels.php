@@ -15,3 +15,8 @@ Broadcast::channel('orders.{orderId}', function (User $user, $orderId) {
 
     return true;
 });
+
+// Presence channel
+Broadcast::channel('rooms.{roomId}', function (User $user, $roomId) {
+    return $user->only('id', 'name');
+});
