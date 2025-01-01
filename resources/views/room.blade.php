@@ -17,6 +17,12 @@
                             .here((users) => {
                                 usersHere = users
                             })
+                            .joining(user => {
+                                usersHere.push(user)
+                            })
+                            .leaving(user => {
+                                usersHere = usersHere.filter(exitingUser => exitingUser.id !== user.id)
+                            })
                     "
                     class="p-6 text-gray-900"
                 >
