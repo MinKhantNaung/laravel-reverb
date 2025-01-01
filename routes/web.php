@@ -48,3 +48,7 @@ Route::get('/rooms/{room}', function (Room $room) {
         'room' => $room
     ]);
 })->middleware(['auth', 'verified'])->name('rooms.index');
+
+Route::get('/whisper', function () {
+    return view('whisper');
+});
