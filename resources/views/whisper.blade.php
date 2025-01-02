@@ -8,24 +8,16 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div
-                    x-init="
-                        const channel = Echo.private('app')
+                <div x-init="const channel = Echo.private('app')" class="p-6 text-gray-900">
+                    <div class="flex items-center absolute leading-none h-3 space-x-1">
+                        <svg fill="none" preserveAspectRatio="none" viewBox="5 5 14 14" class="size-3">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M5.75 5.75L11 18.25L13 13L18.25 11L5.75 5.75Z"></path>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M13 13L18.25 18.25"></path>
+                        </svg>
 
-                        channel.listenForWhisper('typing', (event) => {
-                            console.log(event)
-                        })
-
-                        setTimeout(() => {
-                            channel.whisper('typing', {
-                                id: 1
-                            })
-                        }, 2000)
-                    "
-                    class="p-6 text-gray-900"
-                >
-                    <div>
-                        <h2 class="font-semibold text-lg">Let's test live whispers.</h2>
+                        <span class="text-sm font-semibold">Alex</span>
                     </div>
                 </div>
             </div>
