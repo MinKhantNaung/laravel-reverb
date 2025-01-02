@@ -10,7 +10,17 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div
                     x-init="
-                        Echo.private('app')
+                        const channel = Echo.private('app')
+
+                        channel.listenForWhisper('typing', (event) => {
+                            console.log(event)
+                        })
+
+                        setTimeout(() => {
+                            channel.whisper('typing', {
+                                id: 1
+                            })
+                        }, 2000)
                     "
                     class="p-6 text-gray-900"
                 >
